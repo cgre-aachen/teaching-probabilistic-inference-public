@@ -1,0 +1,11 @@
+<svg width="200" height="150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4f83ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="150" fill="url(#gradient1)"/>
+  <text x="100" y="80" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle">🩺 Medical Test</text>
+  <text x="100" y="100" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">Bayes' Theorem</text>
+</svg>

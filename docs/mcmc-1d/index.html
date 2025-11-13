@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1D MCMC Animation - Interactive Bayesian Inference</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body class="demo-container">
+    <header class="demo-header">
+        <h1>🔄 1D MCMC Animation</h1>
+        <p>Watch Metropolis-Hastings Sampling in Action</p>
+        <a href="../index.html" class="back-button">← Back to Main</a>
+    </header>
+
+    <div class="demo-content">
+        <div class="controls">
+            <h3>Sampling Parameters</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                
+                <div class="control-group">
+                    <label for="proposal-std">Proposal Std Dev: <span id="proposal-std-value">0.5</span></label>
+                    <input type="range" id="proposal-std" min="0.1" max="3.0" value="0.5" step="0.1">
+                </div>
+
+                <div class="control-group">
+                    <label for="target-mean">Target Mean: <span id="target-mean-value">0.0</span></label>
+                    <input type="range" id="target-mean" min="-3.0" max="3.0" value="0.0" step="0.1">
+                </div>
+
+                <div class="control-group">
+                    <label for="target-std">Target Std Dev: <span id="target-std-value">1.0</span></label>
+                    <input type="range" id="target-std" min="0.5" max="2.0" value="1.0" step="0.1">
+                </div>
+
+                <div class="control-group">
+                    <label for="animation-speed">Animation Speed: <span id="animation-speed-value">Fast</span></label>
+                    <input type="range" id="animation-speed" min="1" max="5" value="3" step="1">
+                </div>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <button id="start-btn" class="btn-primary">▶️ Start Sampling</button>
+                <button id="pause-btn" class="btn-secondary">⏸️ Pause</button>
+                <button id="reset-btn" class="btn-secondary">🔄 Reset</button>
+                <span style="margin-left: 1rem; font-weight: bold;">
+                    Samples: <span id="sample-count">0</span> | 
+                    Acceptance Rate: <span id="acceptance-rate">0%</span>
+                </span>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+            
+            <div class="visualization">
+                <h3>Target Distribution & Current Sample</h3>
+                <div id="target-chart"></div>
+            </div>
+
+            <div class="visualization">
+                <h3>Trace Plot</h3>
+                <div id="trace-chart"></div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            
+            <div class="visualization">
+                <h3>Sample Histogram</h3>
+                <div id="histogram-chart"></div>
+            </div>
+
+            <div class="visualization">
+                <h3>Proposal vs Current</h3>
+                <div id="proposal-chart"></div>
+                <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                    <div id="proposal-info">Ready to start sampling...</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+            <h3>Understanding MCMC</h3>
+            <div style="font-size: 0.95rem; line-height: 1.6;">
+                <p><strong>Metropolis-Hastings Algorithm:</strong></p>
+                <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                    <li>Start at an initial position</li>
+                    <li>Propose a new position using a normal distribution centered on current position</li>
+                    <li>Calculate acceptance probability: min(1, P(proposed)/P(current))</li>
+                    <li>Accept or reject the proposal based on this probability</li>
+                    <li>Repeat to build a chain that converges to the target distribution</li>
+                </ol>
+                <p style="margin-top: 1rem;"><strong>Tips:</strong> Adjust the proposal standard deviation to see how it affects mixing. Too small = slow exploration. Too large = many rejections.</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .btn-primary, .btn-secondary {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            transition: background 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: #4299e1;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #3182ce;
+        }
+        
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+        
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+        
+        .sample-point {
+            r: 4;
+            fill: #e53e3e;
+            stroke: white;
+            stroke-width: 2;
+        }
+        
+        .proposed-point {
+            r: 4;
+            fill: #ff9500;
+            stroke: white;
+            stroke-width: 2;
+            opacity: 0.7;
+        }
+    </style>
+
+    <script src="mcmc-1d.js"></script>
+</body>
+</html>

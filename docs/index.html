@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Probabilistic Inference</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Interactive Probabilistic Inference</h1>
+        <p>Explore Bayesian concepts through interactive visualizations</p>
+    </header>
+    
+    <nav>
+        <a href="https://github.com/YOUR_USERNAME/teaching-probabilistic-inference" target="_blank">📚 Jupyter Notebooks</a>
+    </nav>
+
+    <main class="container">
+        <section class="intro">
+            <h2>Welcome to Interactive Bayesian Learning</h2>
+            <p>This collection of interactive visualizations complements the Jupyter notebooks in this repository. 
+            Each demo allows you to explore key concepts in probabilistic inference through hands-on experimentation.</p>
+        </section>
+
+        <section class="demos-grid">
+            <a href="medical-test/index.html" class="demo-card">
+                <img src="images/medical-test-thumb.svg" alt="Medical Test Calculator">
+                <h3>Medical Test Calculator</h3>
+                <p>Explore Bayes' theorem with the classic medical test example. Understand the base rate fallacy through interactive visualization.</p>
+            </a>
+
+            <a href="mcmc-1d/index.html" class="demo-card">
+                <img src="images/mcmc-1d-thumb.svg" alt="1D MCMC Animation">
+                <h3>1D MCMC Animation</h3>
+                <p>Watch Metropolis-Hastings sampling in action. Adjust parameters and see real-time convergence to target distributions.</p>
+            </a>
+
+            <div class="demo-card" style="opacity: 0.6; cursor: not-allowed;">
+                <img src="images/multimodal-thumb.svg" alt="Multimodal Sampling">
+                <h3>Multimodal Distribution Explorer</h3>
+                <p>Explore challenges in sampling from complex, multimodal distributions. Visualize mode-switching dynamics. <em>(Coming Soon)</em></p>
+            </div>
+
+            <div class="demo-card" style="opacity: 0.6; cursor: not-allowed;">
+                <img src="images/convergence-thumb.svg" alt="Convergence Diagnostics">
+                <h3>Convergence Diagnostics</h3>
+                <p>Interactive tools for assessing MCMC convergence. Examine Geweke statistics, R-hat values, and trace analysis. <em>(Coming Soon)</em></p>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Learning Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-item">
+                    <h4>📓 Jupyter Notebooks</h4>
+                    <p>Detailed implementations and exercises for each concept</p>
+                </div>
+                <div class="resource-item">
+                    <h4>📖 Lecture Notes</h4>
+                    <p>Comprehensive theoretical background and derivations</p>
+                </div>
+                <div class="resource-item">
+                    <h4>🎯 Interactive Demos</h4>
+                    <p>Hands-on exploration of key probabilistic concepts</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Teaching Probabilistic Inference | Built with D3.js</p>
+    </footer>
+</body>
+</html>
